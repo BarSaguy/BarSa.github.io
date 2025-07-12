@@ -5,50 +5,72 @@
   <title>תותי טועמת - בלוג אוכל</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <style>
+    /* Reset and full screen */
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      overflow-x: hidden;  /* prevent horizontal scroll */
-      overflow-y: hidden;  /* page scroll disabled */
+      margin: 0; 
+      padding: 0; 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden; /* Prevent page scroll */
+      overscroll-behavior: none;
+      -webkit-overflow-scrolling: touch;
+      background: black; /* Optional to avoid white edges */
     }
+
+    /* Wrapper fills viewport */
     .iframe-wrapper {
       position: fixed;
-      top: 0; left: 0;
+      top: 0; 
+      left: 0;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      clip-path: inset(51px 0 0 0);
-      -webkit-clip-path: inset(51px 0 0 0);
-      mask-image: linear-gradient(to bottom, transparent 51px, black 51px);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 51px, black 51px);
-
-      /* Force hardware acceleration to fix iOS rendering */
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
+      margin: 0; 
+      padding: 0;
+      background: black;
+      /* No clipping here to avoid layout issues */
     }
+
     iframe {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100vw !important;
-      height: 100vh !important;
+      width: 100vw;
+      height: 100vh;
       border: none;
       display: block;
 
       /* Smooth scrolling on iOS */
       -webkit-overflow-scrolling: touch;
+      overflow-y: auto;
 
-      /* GPU acceleration to fix rendering */
+      /* GPU acceleration for smoother rendering */
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform;
     }
   </style>
 </head>
 <body>
   <div class="iframe-wrapper">
-    <iframe src="https://tutitoemet.wixsite.com/tuti" scrolling="yes" allowfullscreen></iframe>
+    <iframe 
+      src="https://tutitoemet.wixsite.com/tuti" 
+      scrolling="yes" 
+      allowfullscreen 
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      ></iframe>
   </div>
+
+  <script>
+    // Dynamically resize iframe to window size (helps iOS)
+    function resizeIframe() {
+      const iframe = document.querySelector('iframe');
+      iframe.style.width = window.innerWidth + 'px';
+      iframe.style.height = window.innerHeight + 'px';
+    }
+    window.addEventListener('resize', resizeIframe);
+    window.addEventListener('load', resizeIframe);
+  </script>
 </body>
 </html>
