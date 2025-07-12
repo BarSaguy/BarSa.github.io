@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <style>
     html, body {
-      margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;  /* prevent horizontal scroll */
+      overflow-y: hidden;  /* page scroll disabled */
     }
     .iframe-wrapper {
       position: fixed;
@@ -18,6 +23,10 @@
       -webkit-clip-path: inset(51px 0 0 0);
       mask-image: linear-gradient(to bottom, transparent 51px, black 51px);
       -webkit-mask-image: linear-gradient(to bottom, transparent 51px, black 51px);
+
+      /* Force hardware acceleration to fix iOS rendering */
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
     iframe {
       position: absolute;
@@ -27,7 +36,13 @@
       height: 100vh !important;
       border: none;
       display: block;
+
+      /* Smooth scrolling on iOS */
       -webkit-overflow-scrolling: touch;
+
+      /* GPU acceleration to fix rendering */
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
   </style>
 </head>
