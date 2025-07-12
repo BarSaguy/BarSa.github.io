@@ -1,11 +1,25 @@
-<html>
-  <title>Tuti Toemet</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <body>
-  
-     <iframe src="https://tutitoemet.wixsite.com/tuti" style="    position: fixed;    left: 0px;    top: -51px;    width: 100%;    height: 108%;}">
-</iframe>  
-    
-  </body>
-</html>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+  }
+  .iframe-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: calc(100% - 51px); /* visible area */
+    overflow: hidden;
+  }
+  iframe {
+    position: absolute;
+    top: -51px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 51px);
+    border: none;
+  }
+</style>
+<body>
+  <div class="iframe-wrapper">
+    <iframe src="https://tutitoemet.wixsite.com/tuti"></iframe>
+  </div>
+</body>
