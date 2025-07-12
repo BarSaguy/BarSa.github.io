@@ -5,32 +5,46 @@
   <title>תותי טועמת - בלוג אוכל</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* Reset margin/padding and make full height */
     html, body {
-      margin: 0; padding: 0; height: 100%; overflow: hidden;
+      margin: 0; 
+      padding: 0; 
+      height: 100%; 
+      overflow: hidden; /* prevent page scroll */
     }
+
+    /* Wrapper that clips top 51px */
     .iframe-wrapper {
       position: fixed;
-      top: 0; left: 0;
+      top: 0; 
+      left: 0;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      /* Clip top 51px */
+
+      /* Clip the top 51px - widest support using clip-path and fallback */
       clip-path: inset(51px 0 0 0);
-      /* or for wider support */
-      /* mask-image: linear-gradient(to bottom, transparent 51px, black 51px); */
+      -webkit-clip-path: inset(51px 0 0 0); /* Safari support */
+      
+      /* fallback for browsers not supporting clip-path */
+      mask-image: linear-gradient(to bottom, transparent 51px, black 51px);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 51px, black 51px);
     }
+
     iframe {
       width: 100%;
       height: 100%;
       border: none;
-      /* position static or relative, no negative top */
       display: block;
+      
+      /* Enable smooth scrolling on iOS */
+      -webkit-overflow-scrolling: touch;
     }
   </style>
 </head>
 <body>
   <div class="iframe-wrapper">
-    <iframe src="https://tutitoemet.wixsite.com/tuti" scrolling="yes"></iframe>
+    <iframe src="https://tutitoemet.wixsite.com/tuti" scrolling="yes" allowfullscreen></iframe>
   </div>
 </body>
 </html>
