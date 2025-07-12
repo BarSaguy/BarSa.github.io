@@ -3,41 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <title>תותי טועמת - בלוג אוכל</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <style>
-    /* Reset margin/padding and make full height */
     html, body {
-      margin: 0; 
-      padding: 0; 
-      height: 100%; 
-      overflow: hidden; /* prevent page scroll */
+      margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden;
     }
-
-    /* Wrapper that clips top 51px */
     .iframe-wrapper {
       position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
       overflow: hidden;
-
-      /* Clip the top 51px - widest support using clip-path and fallback */
       clip-path: inset(51px 0 0 0);
-      -webkit-clip-path: inset(51px 0 0 0); /* Safari support */
-      
-      /* fallback for browsers not supporting clip-path */
+      -webkit-clip-path: inset(51px 0 0 0);
       mask-image: linear-gradient(to bottom, transparent 51px, black 51px);
       -webkit-mask-image: linear-gradient(to bottom, transparent 51px, black 51px);
     }
-
     iframe {
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw !important;
+      height: 100vh !important;
       border: none;
       display: block;
-      
-      /* Enable smooth scrolling on iOS */
       -webkit-overflow-scrolling: touch;
     }
   </style>
