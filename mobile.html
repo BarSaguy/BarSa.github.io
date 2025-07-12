@@ -17,17 +17,19 @@
     }
     iframe {
       position: absolute;
-      top: -51px;
+      top: -51px;      /* move iframe up to hide top 51px */
       left: 0;
-      width: 100%;
+      width: 100%;     /* stretch full width */
       height: calc(100% + 51px);
       border: none;
+      overflow-y: auto;  /* enable vertical scroll */
+      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
     }
   </style>
 </head>
 <body>
   <div class="iframe-wrapper">
-    <iframe src="https://tutitoemet.wixsite.com/tuti"></iframe>
+    <iframe src="https://tutitoemet.wixsite.com/tuti" scrolling="yes"></iframe>
   </div>
 </body>
 </html>
